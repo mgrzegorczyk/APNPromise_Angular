@@ -1,24 +1,32 @@
-<mat-card>
-  <mat-form-field appearance="fill">
-    <mat-label>Amount</mat-label>
-    <input matInput type="number" [(ngModel)]="amount" (ngModelChange)="convertCurrency()">
-  </mat-form-field>
+<!-- currency-converter.component.html -->
+<div *ngIf="rates$ | async as rates; else loading">
+  <mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="amount" (ngModelChange)="convertCurrency()">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>From</mat-label>
-    <mat-select [(ngModel)]="fromCurrency" (ngModelChange)="convertCurrency()">
-      <mat-option *ngFor="let rate of rates$ | async" [value]="rate.code">{{ rate.code }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>From</mat-label>
+      <mat-select [(ngModel)]="fromCurrency" (ngModelChange)="convertCurrency()">
+        <mat-option *ngFor="let rate of rates" [value]="rate.code">{{ rate.code }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>To</mat-label>
-    <mat-select [(ngModel)]="toCurrency" (ngModelChange)="convertCurrency()">
-      <mat-option *ngFor="let rate of rates$ | async" [value]="rate.code">{{ rate.code }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>To</mat-label>
+      <mat-select [(ngModel)]="toCurrency" (ngModelChange)="convertCurrency()">
+        <mat-option *ngFor="let rate of rates" [value]="rate.code">{{ rate.code }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <div>
-    Result: {{ result | currency: toCurrency: 'symbol': '1.2-2' }}
+    <div>
+      Result: {{ result | currency: toCurrency: 'symbol': '1.2-2' }}
+    </div>
+  </mat-card>
+</div>
+<ng-template #loading>
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
   </div>
-</mat-card>
+</ng-template>
