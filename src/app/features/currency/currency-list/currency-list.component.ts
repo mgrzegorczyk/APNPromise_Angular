@@ -1,0 +1,30 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import {CurrencyService} from "../services/currency.service";
+
+@Component({
+  selector: 'app-currency-list',
+  templateUrl: './currency-list.component.html',
+  styleUrls: ['./currency-list.component.scss']
+})
+export class CurrencyListComponent implements OnInit {
+
+  rates$!: Observable<any[]>;
+  date: string = '';
+  maxDate: Date = new Date();
+
+  constructor(private currencyService: CurrencyService) { }
+
+  ngOnInit(): void {
+    this.getRates();
+  }
+
+  getRates() {
+    this.rates$ = this.currencyService.getExchangeRates(this.date);
+  }
+
+  onDateChange(event: any) {
+    this.date = event.value ? new Date(event.value).toISOString().split('T')[0] : '';
+    this.getRates();
+  }
+}
