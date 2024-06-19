@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  padding: 16px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+mat-card {
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-label {
+  font-weight: bold;
+  color: #333;
+}
+
+input[matInput] {
+  padding: 8px;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+input[matInput]:focus,
+mat-select:focus,
+button:focus {
+  outline: 2px solid #3f51b5;
+  outline-offset: 2px;
+}
+
+mat-label,
+li {
+  aria-label: 'Currency list element';
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

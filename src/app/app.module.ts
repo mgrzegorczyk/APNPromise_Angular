@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { CurrencyModule } from './features/currency/currency.module';
 
 import { AppComponent } from './app.component';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { AppComponent } from './app.component';
     SharedModule,
     CurrencyModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

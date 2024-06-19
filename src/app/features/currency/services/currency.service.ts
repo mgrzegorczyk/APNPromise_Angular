@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, catchError, finalize, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,24 @@ import { map } from 'rxjs/operators';
 export class CurrencyService {
 
   private API_URL = 'https://api.nbp.pl/api/exchangerates/tables/A/';
-  private supportedCurrencies = ['EUR', 'USD', 'CHF', 'GBP'];
+  private supportedCurrencies = ['EUR', 'USD', 'PLN', 'CHF', 'GBP'];
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loading$ = this.loadingSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
   getExchangeRates(date: string = ''): Observable<any[]> {
     const formattedDate = date ? new Date(date).toISOString().split('T')[0] : '';
     const url = formattedDate ? `${this.API_URL}${formattedDate}/` : this.API_URL;
+    this.loadingSubject.next(false);
     return this.http.get<any[]>(url).pipe(
-      map(response => {
-        return response[0].rates.filter((rate: { code: string; }) => {
-          return this.supportedCurrencies.includes(rate.code);
-        });
-      })
+      tap(() => this.loadingSubject.next(false)),
+      map(response => response[0].rates.filter((rate: { code: string; }) => this.supportedCurrencies.includes(rate.code))),
+      catchError(err => {
+        this.loadingSubject.next(false);
+        throw err;
+      }),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 }
