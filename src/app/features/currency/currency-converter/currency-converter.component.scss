@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  padding: 16px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+mat-card {
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-label {
+  font-weight: bold;
+  color: #333;
+}
+
+input[matInput] {
+  padding: 8px;
+  font-size: 16px;
+}
+
+mat-select {
+  font-size: 16px;
+}
+
+div {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
