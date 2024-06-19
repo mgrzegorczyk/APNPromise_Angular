@@ -1,27 +1,43 @@
-# CurrencyConverter
+# APNPromise Angular Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+This project is an Angular application for displaying currency exchange rates. The app fetches currency data from a service and displays it in a user-friendly format. It includes a loading spinner to indicate when data is being loaded.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Display real-time currency exchange rates.
+- Show a loading spinner while fetching data.
+- Responsive design using Angular Material components.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To set up the project locally, follow these steps:
 
-## Running unit tests
+1. Clone the repository:
+    ```bash
+   git clone https://github.com/mgrzegorczyk/APNPromise_Angular.git
+    ```
+   
+2. Navigate to the project directory:
+   ```bash
+   cd APNPromise_Angular
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-## Running end-to-end tests
+## Usage
+To run the application locally, use the following command:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  ```bash
+  ng serve
+  ```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The application will be accessible at http://localhost:4200.
