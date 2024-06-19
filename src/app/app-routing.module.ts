@@ -4,7 +4,8 @@ import { CurrencyListComponent } from './features/currency/currency-list/currenc
 import {CurrencyConverterComponent} from "./features/currency/currency-converter/currency-converter.component";
 
 const routes: Routes = [
-  { path: '', component: CurrencyListComponent },
+  { path: '', redirectTo: '/list', pathMatch: 'full' },
+  { path: 'list', component: CurrencyListComponent },
   { path: 'converter', component: CurrencyConverterComponent },
 ];
 
