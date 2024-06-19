@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class CurrencyService {
 
   private API_URL = 'https://api.nbp.pl/api/exchangerates/tables/A/';
-  private supportedCurrencies = ['EUR', 'USD', 'PLN', 'CHF', 'GBP'];
+  private supportedCurrencies = ['EUR', 'USD', 'CHF', 'GBP'];
 
   constructor(private http: HttpClient) { }
 
